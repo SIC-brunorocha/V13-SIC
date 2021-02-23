@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+    
+        <record id="bom_by_product_form_view" model="ir.ui.view">
+            <field name="name">bom.by.product.form.view</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                	<page string="Direct Material Costs By Product">
+                        <field name="bom_by_material_cost_ids" widget="one2many_list">
+                            <tree string="Direct Material Costs By Product" editable="bottom">
+                                <field name="by_operation_id" />
+                                <field name="by_product_id"/>
+                                <field name="by_planned_qty"/>
+                                <field name="by_uom_id"/>
+                                <field name="by_cost"  widget="monetary"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="by_total_cost"  widget="monetary"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="by_bom_total_material_cost">
+                            <div class="oe_inline o_td_label">
+                                <label for="by_bom_total_material_cost" />
+                            </div>
+                            <field name="by_bom_total_material_cost" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' />
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </page>
+                    
+                    <page string="Direct Labour Costs By Product">
+                        <field name="bom_by_labour_cost_ids" widget="one2many_list">
+                            <tree string="Direct Labour Costs By Product" editable="bottom">
+                                <field name="by_operation_id" />
+                                <field name="by_product_id"/>
+                                <field name="by_planned_qty"/>
+                                <field name="by_uom_id"/>
+                                <field name="by_cost"  widget="monetary"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="by_total_cost"  widget="monetary"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="by_bom_total_labour_cost">
+                            <div class="oe_inline o_td_label">
+                                <label for="by_bom_total_labour_cost" />
+                            </div>
+                            <field name="by_bom_total_labour_cost" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' />
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </page>
+                    
+                    <page string="Direct Overhead Costs By Product">
+                        <field name="bom_by_overhead_cost_ids" widget="one2many_list">
+                            <tree string="Direct Overhead Costs By Product" editable="bottom">
+                                <field name="by_operation_id" />
+                                <field name="by_product_id"/>
+                                <field name="by_planned_qty"/>
+                                <field name="by_uom_id"/>
+                                <field name="by_cost"  widget="monetary"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="by_total_cost"  widget="monetary"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="by_bom_total_overhead_cost">
+                            <div class="oe_inline o_td_label">
+                                <label for="by_bom_total_overhead_cost" />
+                            </div>
+                            <field name="by_bom_total_overhead_cost" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' />
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+    	</record>
+    
+        <record id="production_by_product_form_view" model="ir.ui.view">
+            <field name="name">production.by.product.form.view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                	<page string="Direct Material Costs By Product">
+                        <field name="pro_by_material_cost_ids" widget="one2many_list">
+                            <tree string="Direct Material Costs By Product" editable="bottom">
+                                <field name="by_operation_id" />
+                                <field name="by_product_id"/>
+                                <field name="by_planned_qty"/>
+                                <field name="by_actual_qty"/>
+                                <field name="by_uom_id"/>
+                                <field name="by_cost"  widget="monetary"  sum="cost"/>
+                                <field name="by_total_cost"  widget="monetary" sum="by_total_cost"/>
+                                <field name="by_total_actual_cost"  widget="monetary" sum="by_total_actual_cost"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    
+                    <page string="Direct Labour Costs By Product">
+                        <field name="pro_by_labour_cost_ids" widget="one2many_list">
+                            <tree string="Direct Labour Costs By Product" editable="bottom">
+                                <field name="by_operation_id" />
+                                <field name="by_product_id"/>
+                                <field name="by_planned_qty"/>
+                                <field name="by_actual_qty"/>
+                                <field name="by_uom_id"/>
+                                <field name="by_cost"  widget="monetary"  sum="cost"/>
+                                <field name="by_total_cost"  widget="monetary" sum="by_total_cost"/>
+                                <field name="by_total_actual_cost"  widget="monetary" sum="by_total_actual_cost"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    
+                    <page string="Manufacturing Overhead Costs By Product">
+                        <field name="pro_by_overhead_cost_ids" widget="one2many_list">
+                            <tree string="Direct Overhead Cost" editable="bottom">
+                                <field name="by_operation_id" />
+                                <field name="by_product_id"/>
+                                <field name="by_planned_qty"/>
+                                <field name="by_actual_qty"/>
+                                <field name="by_uom_id"/>
+                                <field name="by_cost"  widget="monetary"  sum="cost"/>
+                                <field name="by_total_cost"  widget="monetary" sum="by_total_cost"/>
+                                <field name="by_total_actual_cost"  widget="monetary" sum="by_total_actual_cost"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    
+                    <page string="Costing By Product">
+                        <group>
+                            <group>
+                                <field name="by_total_material_cost"/> 
+                                <field name="by_total_labour_cost"/> 
+                                <field name="by_total_overhead_cost"/> 
+                                <field name="by_total_all_cost"/>    
+                            </group>
+                            
+                            <group>
+                                <field name="by_total_actual_material_cost"/> 
+                                <field name="by_total_actual_labour_cost"/> 
+                                <field name="by_total_actual_overhead_cost"/> 
+                                <field name="by_total_actual_all_cost"/>
+                                <field name="by_product_unit_cost"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>    
+            </field>
+        </record>        	
+        
+    </data>
+</odoo>
