@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<template id="mrp_bom_cost_report_custom_inherit" inherit_id="bi_odoo_process_costing_manufacturing.mrp_bom_cost_report_custom">
+    <xpath expr="//table[@id='overhead_cost']" position="after">
+        <h2>Direct Material Cost By Product</h2><br/>
+        <table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+            <thead>
+			    <tr>
+				    <th>Operation</th>
+				    <th>Product</th>
+				    <th>Planned Qty</th>
+				    <th>UOM</th>
+				    <th>Cost/Unit</th>
+				    <th>Total Cost</th>
+			    </tr>
+	        </thead>  
+			<tbody class="material_by_product_tbody">
+			    <t t-set="material_by_product_total" t-value="0.0" />
+			    <t t-foreach="o.bom_by_material_cost_ids" t-as="bom_by_material">	 
+                <tr>
+			        <td>
+				        <span t-field="bom_by_material.by_operation_id.name" />
+			        </td>
+	                <td>
+				        <span t-field="bom_by_material.by_product_id.name" />
+			        </td>
+			        <td>
+				        <span t-field="bom_by_material.by_planned_qty" />
+			        </td>
+			        <td>
+				        <span t-field="bom_by_material.by_uom_id.name" />
+			        </td>
+	                <td>
+				        <span t-field="bom_by_material.by_cost" />
+			        </td>
+			        <td>
+				        <span t-field="bom_by_material.by_total_cost" />
+			        </td>
+			        <t t-set="material_by_product_total" t-value="material_by_product_total +int (bom_by_material.by_total_cost) " />
+		        </tr>
+		        </t>
+		        <tr>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+					<td style="text-align: right;font-weight: bold;">Total Material Cost :</td>
+					<td style="text-align: center; vertical-align: right;font-weight: bold;">
+						<span t-esc="material_by_product_total" />
+					</td>
+			    </tr>
+			</tbody>
+        </table>    
+        
+        <h2>Direct Labour Cost By Product</h2><br/>
+        <table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+            <thead>
+			    <tr>
+				    <th>Operation</th>
+				    <th>Product</th>
+				    <th>Planned Qty</th>
+				    <th>UOM</th>
+				    <th>Cost/Unit</th>
+				    <th>Total Cost</th>
+			    </tr>
+	        </thead>  
+			<tbody class="labour_by_product_tbody">
+			    <t t-set="labour_by_product_total" t-value="0.0" />
+			    <t t-foreach="o.bom_by_labour_cost_ids" t-as="bom_by_labour">	 
+                <tr>
+			        <td>
+				        <span t-field="bom_by_labour.by_operation_id.name" />
+			        </td>
+	                <td>
+				        <span t-field="bom_by_labour.by_product_id.name" />
+			        </td>
+			        <td>
+				        <span t-field="bom_by_labour.by_planned_qty" />
+			        </td>
+			        <td>
+				        <span t-field="bom_by_labour.by_uom_id.name" />
+			        </td>
+	                <td>
+				        <span t-field="bom_by_labour.by_cost" />
+			        </td>
+			        <td>
+				        <span t-field="bom_by_labour.by_total_cost" />
+			        </td>
+			        <t t-set="labour_by_product_total" t-value="labour_by_product_total +int (bom_by_labour.by_total_cost) " />
+		        </tr>
+		        </t>
+		        <tr>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+					<td style="text-align: right;font-weight: bold;">Total Labour Cost :</td>
+					<td style="text-align: center; vertical-align: right;font-weight: bold;">
+						<span t-esc="labour_by_product_total" />
+					</td>
+			    </tr>
+			</tbody>
+        </table>          
+
+        <h2>Direct Overhead Cost By Product</h2><br/>
+        <table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+            <thead>
+			    <tr>
+				    <th>Operation</th>
+				    <th>Product</th>
+				    <th>Planned Qty</th>
+				    <th>UOM</th>
+				    <th>Cost/Unit</th>
+				    <th>Total Cost</th>
+			    </tr>
+	        </thead>  
+			<tbody class="overhead_by_product_tbody">
+			    <t t-set="overhead_by_product_total" t-value="0.0" />
+			    <t t-foreach="o.bom_by_overhead_cost_ids" t-as="bom_by_overhead">	 
+                <tr>
+			        <td>
+				        <span t-field="bom_by_overhead.by_operation_id.name" />
+			        </td>
+	                <td>
+				        <span t-field="bom_by_overhead.by_product_id.name" />
+			        </td>
+			        <td>
+				        <span t-field="bom_by_overhead.by_planned_qty" />
+			        </td>
+			        <td>
+				        <span t-field="bom_by_overhead.by_uom_id.name" />
+			        </td>
+	                <td>
+				        <span t-field="bom_by_overhead.by_cost" />
+			        </td>
+			        <td>
+				        <span t-field="bom_by_overhead.by_total_cost" />
+			        </td>
+			        <t t-set="overhead_by_product_total" t-value="overhead_by_product_total +int (bom_by_overhead.by_total_cost) " />
+		        </tr>
+		        </t>
+		        <tr>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+					<td style="text-align: right;font-weight: bold;">Total Overhead Cost :</td>
+					<td style="text-align: center; vertical-align: right;font-weight: bold;">
+						<span t-esc="overhead_by_product_total" />
+					</td>
+			    </tr>
+			</tbody>
+        </table>                    
+                
+    </xpath>
+</template>
+
+</data>
+</odoo>
+

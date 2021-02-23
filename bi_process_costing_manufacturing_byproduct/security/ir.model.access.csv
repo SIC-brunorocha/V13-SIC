@@ -1,0 +1,4 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+material_cost_byproduct_user,material_cost_byproduct_name,bi_process_costing_manufacturing_byproduct.model_material_cost_byproduct,,1,1,1,1
+labour_cost_byproduct_user,labour_cost_byproduct_name,bi_process_costing_manufacturing_byproduct.model_labour_cost_byproduct,,1,1,1,1
+overhead_cost_byproduct_user,overhead_cost_byproduct_name,bi_process_costing_manufacturing_byproduct.model_overhead_cost_byproduct,,1,1,1,1
