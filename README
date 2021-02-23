@@ -1,0 +1,8 @@
+
+Version : 13.0.0.1
+-improved module with costing method options in setting
+-based on method bom and Mo will be calculat costing 
+
+13.0.0.2
+-we start to creat BOM, and add 1 component to BOM. after adding 1 component then save. After saving if we add 2nd, 3rd, 4th  components to BOM then only the 1st component will appear in Direct material cost portion. 
+
